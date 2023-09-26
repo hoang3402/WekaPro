@@ -13,7 +13,7 @@ public class MyFPGrowthModel extends MyKnowledgeModel {
     }
     
     public void mineAssociationRule() throws Exception {
-        newDataset = convertData(this.dataset);
+        newDataset = convert2Binary(this.dataset);
         fpgrowth.setOptions(this.model_options);
         fpgrowth.buildAssociations(newDataset);
     }

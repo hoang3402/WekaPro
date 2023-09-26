@@ -3,6 +3,7 @@ import weka.core.Instances;
 import weka.core.converters.ArffSaver;
 import weka.core.converters.ConverterUtils.DataSource;
 import weka.filters.Filter;
+import weka.filters.unsupervised.attribute.NominalToBinary;
 import weka.filters.unsupervised.attribute.NumericToNominal;
 import weka.filters.unsupervised.attribute.Remove;
 
@@ -44,5 +45,12 @@ public class MyKnowledgeModel {
         n2n.setOptions(data_options);
         n2n.setInputFormat(originalData);
         return Filter.useFilter(originalData, n2n);
+    }
+    
+    public Instances convert2Binary(Instances originalData) throws Exception {
+        NominalToBinary n2b = new NominalToBinary();
+        n2b.setOptions(data_options);
+        n2b.setInputFormat(originalData);
+        return Filter.useFilter(originalData, n2b);
     }
 }
